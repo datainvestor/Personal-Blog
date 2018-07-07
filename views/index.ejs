@@ -1,0 +1,53 @@
+<% include ./partials/header %>
+
+
+
+<div class="ui main text container">
+    <div class="row" id="page-header">
+        <div class="ui basic segment" style="padding-left: 0;">
+            <h1 class="ui sub header">
+                Your data corner
+            </h1>
+            <span>Your source of info about data</span>
+        </div>
+    </div>
+    <div class="ui top vertical segment">
+        
+            <% if(error && error.length > 0) { %>
+            <div class="ui negative message">
+                <div class="header">
+                    <%=error%>
+                </div>      
+            </div>
+            <% } %>
+        
+        <div class="ui divided items">
+            <% blogs.forEach(function(blog){ %>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%=blog.image%>">
+                    </div>
+                    <div class="content">
+                        <a class="header" href="/blogs/<%=blog._id%>"><%=blog.title%></a>
+                        <div class="meta">
+                            <span><%=blog.created.toDateString()%></span>
+                        </div>
+                        <div class="description">
+                            <p><%-blog.desc%></p>
+                        </div>
+                        <div class="extra">
+                            <a class="ui floated basic violet button" href="/blogs/<%=blog._id%>">
+                                Read More
+                                <i class="right chevron icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h2></h2>
+                </div>
+            <% }) %>    
+        </div>
+    </div>
+</div>
+
+
+<% include ./partials/footer %>
