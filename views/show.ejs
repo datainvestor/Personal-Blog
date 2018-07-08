@@ -1,7 +1,9 @@
 <% include ./partials/header %>
-<div class="ui main text container">
-    <div class="ui huge header"><%=blog.title%></div>
-    <div class="ui vertical segment">
+<div class="ui main grid container">
+    <div class="row"><%=blog.title%></div>
+    <div class="row" id="article">
+    
+    <div class="eleven wide column"> 
         <div class="item">
             <img class="ui centered rounded image" src="<%= blog.image %>" >
            <div class="content">
@@ -22,6 +24,18 @@
             </form>
             <% } %>
         </div>
+    </div>    
+    
+    <div class="four wide right floated column">
+        <h4 class="ui header"> See also:</h4>
+        <% blogs.forEach(function(blog){ %>
+         <a  href="/blogs/<%=blog._id%>">
+            Read More
+        </a>
+        <% }) %>
+    </div>
+        
+        
     </div>
 </div>
 <% include ./partials/footer %>

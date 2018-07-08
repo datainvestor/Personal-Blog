@@ -44,7 +44,6 @@ app.use(function(req,res,next){
 
 
 app.get("/", function(req, res){
-    
     res.redirect("/blogs")
 })
 
@@ -68,6 +67,7 @@ app.get("/blogs", function(req, res){
             if(err){
                 console.log("ERROR!")
             } else {
+                console.log(blogs.slice(0,3))
                 res.render("index", {blogs: blogs})
             }
         })
@@ -96,7 +96,14 @@ app.get("/blogs/:id", function(req, res) {
         if(err || !foundBlog){
             res.redirect("/blogs")
         } else {
-            res.render("show", {blog:foundBlog})
+        Blog.find({}, function(err, blogs){
+            if(err){
+                console.log("ERROR!")
+            } else {
+                console.log(blogs.slice(0,3))
+                res.render("show", {blogs: blogs, blog:foundBlog})
+            }
+        })
         }
     })
 })

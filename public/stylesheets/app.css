@@ -1,5 +1,6 @@
 body {
     background-image: url(https://www.photohdx.com/images/2017/04/clean-white-paper-background-texture.jpg) !important;
+    background-size: cover !important;
 }
 
 i.bar {
@@ -21,11 +22,6 @@ body > .grid {
 
 
 
-.column {
-    max-width: 450px;
-}
-
-
 .image > img {
     max-height: 100px;
 }
@@ -44,3 +40,9 @@ body > .grid {
 .ui.inverted.pointing.menu .active.item:after {
     background-color: white !important;
   }
+  
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.ui.container {
+    width: 723px;
+ }
+}
