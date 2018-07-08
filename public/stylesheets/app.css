@@ -16,11 +16,10 @@ i.bar {
 }
 
 
-body > .grid {
-    height: 100%;
+#post-header h2 {
+    font-size:40px;
+    padding-left: 10px;
 }
-
-
 
 .image > img {
     max-height: 100px;

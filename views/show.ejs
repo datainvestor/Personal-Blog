@@ -1,11 +1,15 @@
 <% include ./partials/header %>
 <div class="ui main grid container">
-    <div class="row"><%=blog.title%></div>
+    <div class="row" id="post-header">
+        <h2 class="ui sub header">
+            <%=blog.title%>
+        </h2>
+    </div>
     <div class="row" id="article">
     
     <div class="eleven wide column"> 
         <div class="item">
-            <img class="ui centered rounded image" src="<%= blog.image %>" >
+            <img class="ui rounded image" src="<%= blog.image %>" >
            <div class="content">
 	                <div class="meta">
     	                <span><%= blog.created.toDateString() %> 
@@ -28,10 +32,15 @@
     
     <div class="four wide right floated column">
         <h4 class="ui header"> See also:</h4>
-        <% blogs.forEach(function(blog){ %>
+        <% var current = blog._id %>
+        <% blogs.slice(0,4).forEach(function(blog){ %>
+        <% if (JSON.stringify(blog._id) == JSON.stringify(current)) { %>
+        <% return %>
+        <% } %>
          <a  href="/blogs/<%=blog._id%>">
-            Read More
+            <%=blog.title%>
         </a>
+        <br>
         <% }) %>
     </div>
         
