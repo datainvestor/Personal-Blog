@@ -48,28 +48,48 @@ app.get("/", function(req, res){
 })
 
 app.get("/blogs", function(req, res){
+    var perPage = 6;
+    var pageQuery = parseInt(req.query.page);
+    var pageNumber = pageQuery ? pageQuery : 1;
+    var noMatch = null;
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // now searches in both desc and title
-        Blog.find().or([{"title":regex}, {"desc":regex}]).exec(function(err, blogs){
+        Blog.find().or([{"title":regex}, {"desc":regex}]).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err, blogs){
+            Blog.count([{"title":regex}, {"desc":regex}]).exec(function (err, count) {
             if(err){
                 console.log("ERROR!")
+                res.redirect("back");
             } else {
                 if(blogs.length < 1) {
                     req.flash('error', 'Sorry, no blog entries match your query. Please try again');
                     return res.redirect('/blogs');
                 }
-                res.render("index", {blogs: blogs})
+                res.render("index", {
+                    blogs: blogs,
+                    current: pageNumber,
+                    pages: Math.ceil(count / perPage),
+                    noMatch: noMatch,
+                    search: req.query.search
+                })
             }
-        }) 
+            }) 
+        });
     } else {
-        Blog.find({}, function(err, blogs){
+        Blog.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, blogs) {
+            Blog.count().exec(function (err, count) {
             if(err){
                 console.log("ERROR!")
             } else {
-                console.log(blogs.slice(0,3))
-                res.render("index", {blogs: blogs})
+                res.render("index", {
+                    blogs: blogs,
+                    current: pageNumber,
+                    pages: Math.ceil(count / perPage),
+                    noMatch: noMatch,
+                    search: false
+                })
             }
+        })
         })
     }
 })

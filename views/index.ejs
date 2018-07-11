@@ -48,6 +48,53 @@
             <% }) %>    
         </div>
     </div>
+    
+    
+    
+    <div class="row">
+    <% if (pages && pages > 0) { %>
+    <div class="ui pagination menu">
+        <% if (current == 1) { %>
+        <div class="disabled item">First</div>
+        <% } else { %>
+        <a class="item" href="/blogs<%if(search){%>?search=<%=search%><%}%>">First</a>
+        <% } %>
+ 
+        <% if (current == 1) { %>
+        <div class="disabled item">«</div>
+        <% } else { %>
+        <a class="item" href="/blogs?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a>
+        <% } %>
+ 
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+        <div class="disabled item">...</div>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+        <% if (i == current) { %>
+        <a class="item active"><%= i %></a>
+        <% } else { %>
+        <a class="item" href="/blogs?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a>
+        <% } %>
+        <% if (i == Number(current) + 4 && i < pages) { %>
+        <div class="disabled item">...</div>
+        <% } %>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <div class="disabled item">»</div>
+        <% } else { %>
+        <a class="item" href="/blogs?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a>
+        <% } %>
+ 
+        <% if (current == pages) { %>
+        <div class="disabled item">Last</div>
+        <% } else { %>
+        <a class="item" href="/blogs?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a>
+        <% } %>
+    
+    <% } %>
+    </div>
 </div>
 
 
