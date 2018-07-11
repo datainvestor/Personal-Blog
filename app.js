@@ -11,7 +11,7 @@ var express = require("express"),
     User       = require("./models/user")
 require('dotenv').config()
 
-mongoose.connect("mongodb://localhost/blog_app")
+mongoose.connect(process.env.DB)
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))  //for static files like css
