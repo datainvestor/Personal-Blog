@@ -34,11 +34,7 @@ s
     font-size: 60px;
     font-family: Archivo;
   }
-#page-header span {
-    font-size: 20px;
-    color: grey;
-    font-family: Archivo;
-  }
+
   
 .ui.inverted.pointing.menu .active.item:after {
     background-color: white !important;
@@ -48,4 +44,32 @@ s
 .ui.container {
     width: 723px;
  }
+}
+
+.logo-line-before i,
+.logo-line-after i {
+  position: relative;
+  display: block;
+  height: 2px;
+  background: #222;
+}
+
+.logo-line-before,
+.logo-line-after {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 75%;
+}
+
+.ui.sub.header {
+    margin-top: auto;
+}
+
+.ui.main.text.container {
+    overflow: hidden;
+}
+
+.ui.basic.segment {
+    padding-top: 25px;
 }

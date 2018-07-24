@@ -1,6 +1,17 @@
 
 
 <script>
+    
+    document.querySelectorAll(".bf").velocity({ transform: ["translateX(-100%)", "translateX(0%)"] }, { duration: 285 });
+    document.querySelectorAll(".af").velocity({ transform: ["translateX(100%)", "translateX(0%)"] }, { duration: 285 });
+
+    document.querySelectorAll(".ttl").velocity("slideInDown", {delay: 600 });
+
+    document.querySelectorAll(".mmn1").velocity("slideInDown", { delay: 1200 });
+    document.querySelectorAll(".mmn2").velocity("slideInDown", { delay: 1600 });
+    document.querySelectorAll(".mmn3").velocity("slideInDown", { delay: 1900 });
+    document.querySelectorAll(".mmn4").velocity("slideInDown", { delay: 2200 });
+    document.querySelectorAll(".mmn5").velocity("slideInDown", { delay: 2650 });
     $(document).ready(function(){
     $('.ui .n').on('click', function() {
         $('.ui .n').removeClass('active');

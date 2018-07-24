@@ -6,12 +6,18 @@
     <div class="row" id="page-header">
         <div class="ui basic segment" style="padding-left: 0;">
             <h1 class="ui sub header">
-                Your data corner
+                <span class="logo-line-before">
+                    <i class="bf" style="left: 100%;"></i>
+                </span>
+                <span class="ttl" style="opacity:0; padding-left: 25px;"> Your data corner </span>
+                <span class="logo-line-after">
+                    <i class="af" style="right:100%;"></i>
+                </span>
             </h1>
-            <span>Your source of info about data</span>
+           
         </div>
     </div>
-    <div class="ui top vertical segment">
+    <div class="ui top vertical segment mmn5" style="opacity:0;">
         
             <% if(error && error.length > 0) { %>
             <div class="ui negative message">
@@ -96,6 +102,7 @@
     <% } %>
     </div>
 </div>
+
 
 
 <% include ./partials/footer %>
